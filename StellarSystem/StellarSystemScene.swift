@@ -24,6 +24,8 @@ final class StellarSystemScene: SCNScene {
         contentNode.addChildNode(sunGroupNode)
         
         sunGroupNode.addChildNode(sunLightNode(angle: -Float(Double.pi/2)))
+        sunGroupNode.addChildNode(sunLightNode(angle: -Float(Double.pi/4)))
+        sunGroupNode.addChildNode(sunLightNode(angle: -Float(Double.pi/8)))
         sunGroupNode.addChildNode(sunLightNode(angle: 0))
         
         let sunNode = sphereNode("sun", radius: 1.5, lightningModel: .constant, duration: 20.0)
@@ -36,13 +38,13 @@ final class StellarSystemScene: SCNScene {
         sunGroupNode.addChildNode(mercuryRotationNode)
         
         // Venus-group (will contain the Earth, and the Moon)
-        let venusRotationNode = planetRotationNode()
+        let venusRotationNode = planetRotationNode(angle: Float(Double.pi/8))
         let venusGroupNode = planetGroupNode(sphereNode: sphereNode("venus", radius: 0.9), position: SCNVector3Make(6, 0, 0))
         venusRotationNode.addChildNode(venusGroupNode)
         sunGroupNode.addChildNode(venusRotationNode)
         
         // Earth-group (will contain the Earth, and the Moon)
-        let earthRotationNode = planetRotationNode()
+        let earthRotationNode = planetRotationNode(angle: Float(Double.pi/4))
         let earthGroupNode = planetGroupNode(sphereNode: sphereNode("earth", castsShadow: true, radius: 1.0), position: SCNVector3Make(10, 0, 0))
         let moonNode = satelliteNode("moon")
         earthGroupNode.addChildNode(satelliteRotationNode(satelliteNode: moonNode))
