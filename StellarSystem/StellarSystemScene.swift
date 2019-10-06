@@ -18,42 +18,40 @@ final class StellarSystemScene: SCNScene {
         
         // Sun-group
         
-        let sunNode = sphereNode("sun", radius: 1.5, lightningModel: .constant, duration: 20.0)
-        
-        let mercuryRotationNode = planetRotationNode()
-        let venusRotationNode = planetRotationNode()
-        let earthRotationNode = planetRotationNode()
-        let marsRotationNode = planetRotationNode()
-        
         let sunGroupNode = SCNNode()
         sunGroupNode.castsShadow = false
         sunGroupNode.position = SCNVector3Make(0, 0, 0)
-        sunGroupNode.addChildNode(sunNode)
         sunGroupNode.addChildNode(sunLightNode)
-        sunGroupNode.addChildNode(mercuryRotationNode)
-        sunGroupNode.addChildNode(venusRotationNode)
-        sunGroupNode.addChildNode(earthRotationNode)
-        sunGroupNode.addChildNode(marsRotationNode)
+        contentNode.addChildNode(sunGroupNode)
+        
+        let sunNode = sphereNode("sun", radius: 1.5, lightningModel: .constant, duration: 20.0)
+        sunGroupNode.addChildNode(sunNode)
         
         // Mercury-group (will contain the Earth, and the Moon)
+        let mercuryRotationNode = planetRotationNode()
         let mercuryGroupNode = planetGroupNode(sphereNode: sphereNode("mercury", radius: 0.4), position: SCNVector3Make(3, 0, 0))
         mercuryRotationNode.addChildNode(mercuryGroupNode)
+        sunGroupNode.addChildNode(mercuryRotationNode)
         
         // Venus-group (will contain the Earth, and the Moon)
+        let venusRotationNode = planetRotationNode()
         let venusGroupNode = planetGroupNode(sphereNode: sphereNode("venus", radius: 0.9), position: SCNVector3Make(6, 0, 0))
         venusRotationNode.addChildNode(venusGroupNode)
+        sunGroupNode.addChildNode(venusRotationNode)
         
         // Earth-group (will contain the Earth, and the Moon)
+        let earthRotationNode = planetRotationNode()
         let earthGroupNode = planetGroupNode(sphereNode: sphereNode("earth", castsShadow: true, radius: 1.0), position: SCNVector3Make(10, 0, 0))
         let moonNode = satelliteNode("moon")
         earthGroupNode.addChildNode(satelliteRotationNode(satelliteNode: moonNode))
         earthRotationNode.addChildNode(earthGroupNode)
+        sunGroupNode.addChildNode(earthRotationNode)
         
         // Mars-group (will contain the Earth, and the Moon)
+        let marsRotationNode = planetRotationNode()
         let marsGroupNode = planetGroupNode(sphereNode: sphereNode("mars", radius: 0.8, lightningModel: .constant), position: SCNVector3Make(16, 0, 0))
         marsRotationNode.addChildNode(marsGroupNode)
-        
-        contentNode.addChildNode(sunGroupNode)
+        sunGroupNode.addChildNode(marsRotationNode)
     }
 }
 
