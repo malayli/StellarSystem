@@ -11,17 +11,10 @@ final class StellarSystemScene: SCNScene {
         rootNode.castsShadow = false
         
         // Content Node
+        
         let contentNode = SCNNode()
         contentNode.castsShadow = false
         rootNode.addChildNode(contentNode)
-        
-        // Earth-group (will contain the Earth, and the Moon)
-        let _earthGroupNode = earthGroupNode(earthNode: earthNode)
-        _earthGroupNode.addChildNode(moonRotationNode())
-        contentNode.addChildNode(_earthGroupNode)
-        
-        //Earth-rotation (center of rotation of the Earth around the Sun)
-        let _earthRotationNode = earthRotationNode(earthGroupNode: _earthGroupNode)
         
         // Sun-group
         
@@ -29,22 +22,54 @@ final class StellarSystemScene: SCNScene {
         sunGroupNode.castsShadow = false
         sunGroupNode.position = SCNVector3Make(0, 0, 0)
         sunGroupNode.addChildNode(sunNode)
-        sunGroupNode.addChildNode(sunLightNode(eulerAngles: SCNVector3Make(0, -Float(Double.pi/2), 0)))
-        sunGroupNode.addChildNode(_earthRotationNode)
+        sunGroupNode.addChildNode(sunLightNode)
+        sunGroupNode.addChildNode(earthRotationNode)
+        
         contentNode.addChildNode(sunGroupNode)
     }
 }
 
 private extension StellarSystemScene {
+    private func borgNode(position p: SCNVector3) -> SCNNode {
+        let node = SCNNode()
+        node.position = p
+        node.geometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
+        
+        if let noiseImage = UIImage(named: "noise") {
+            node.geometry?.firstMaterial?.setValue(SCNMaterialProperty(contents: noiseImage), forKey: "noiseTexture")
+        }
+        
+        node.geometry?.firstMaterial?.shaderModifiers = [.fragment: appearingFragmentShader]
+        
+        let revealAnimation = CABasicAnimation(keyPath: "revealage")
+        revealAnimation.timingFunction = CAMediaTimingFunction(name: .linear)
+        revealAnimation.beginTime = CACurrentMediaTime() + 5
+        revealAnimation.duration = 2.5
+        revealAnimation.fromValue = 0.0
+        revealAnimation.toValue = 1.0
+        revealAnimation.fillMode = .forwards
+        revealAnimation.isRemovedOnCompletion = false
+        
+        let scnRevealAnimation = SCNAnimation(caAnimation: revealAnimation)
+        node.geometry?.firstMaterial?.addAnimation(scnRevealAnimation, forKey: "Reveal")
+        
+        node.castsShadow = false
+        node.geometry?.firstMaterial?.lightingModel = .constant
+        node.addAnimation(duration: 20.0, from: NSValue(scnVector4: SCNVector4Make(0, 1, 0, 0)), to: NSValue(scnVector4: SCNVector4Make(0, 1, 0, Float(Double.pi) * 2.0)), key: "borg rotation")
+        return node
+    }
+}
+
+private extension StellarSystemScene {
     private var sunNode: SCNNode {
-        let sunNode = SCNNode(radius: 1.5, imageName: "sun")
-        sunNode.castsShadow = false
-        sunNode.geometry?.firstMaterial?.lightingModel = .constant
-        sunNode.addAnimation(duration: 20.0, from: NSValue(scnVector4: SCNVector4Make(0, 1, 0, 0)), to: NSValue(scnVector4: SCNVector4Make(0, 1, 0, Float(Double.pi) * 2.0)), key: "sun rotation")
-        return sunNode
+        let node = SCNNode(radius: 1.5, imageName: "sun")
+        node.castsShadow = false
+        node.geometry?.firstMaterial?.lightingModel = .constant
+        node.addAnimation(duration: 20.0, from: NSValue(scnVector4: SCNVector4Make(0, 1, 0, 0)), to: NSValue(scnVector4: SCNVector4Make(0, 1, 0, Float(Double.pi) * 2.0)), key: "sun rotation")
+        return node
     }
     
-    private func sunLightNode(eulerAngles: SCNVector3) -> SCNNode {
+    private var sunLightNode: SCNNode {
         let sunLightNode = SCNNode()
         sunLightNode.castsShadow = false
         sunLightNode.light = SCNLight()
@@ -79,12 +104,15 @@ private extension StellarSystemScene {
         return earthGroupNode
     }
     
-    private func earthRotationNode(earthGroupNode: SCNNode) -> SCNNode {
+    private var earthRotationNode: SCNNode {
+        // Earth-group (will contain the Earth, and the Moon)
+        let _earthGroupNode = earthGroupNode(earthNode: earthNode)
+        _earthGroupNode.addChildNode(moonRotationNode(moonNode: moonNode))
+        
         let earthRotationNode = SCNNode()
         earthRotationNode.castsShadow = false
-        earthRotationNode.addChildNode(earthGroupNode)
-        
         earthRotationNode.position = SCNVector3(0, 0, 0)
+        earthRotationNode.addChildNode(_earthGroupNode)
         
         // Rotate the Earth around the Sun
         earthRotationNode.addAnimation(duration: 20, from: NSValue(scnVector4: SCNVector4Make(0, 2, 1, 0)), to: NSValue(scnVector4: SCNVector4Make(0, 2, 1, Float(Double.pi) * 2.0)), key: "earth rotation around the sun")
@@ -103,7 +131,7 @@ private extension StellarSystemScene {
         return moonNode
     }
     
-    private func moonRotationNode() -> SCNNode {
+    private func moonRotationNode(moonNode: SCNNode) -> SCNNode {
         // Moon-rotation (center of rotation of the Moon around the Earth)
         let moonRotationNode = SCNNode()
         moonRotationNode.castsShadow = false

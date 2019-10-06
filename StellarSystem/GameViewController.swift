@@ -16,16 +16,24 @@ final class GameViewController: UIViewController {
         
         scnView.scene = StellarSystemScene() as StellarSystemScene
 
+        let camera = SCNCamera()
+        camera.wantsHDR = true
+        camera.bloomThreshold = 0.8
+        camera.bloomIntensity = 2
+        camera.bloomBlurRadius = 16.0
+        camera.wantsExposureAdaptation = false
+        
         // create and add a camera to the scene
         let cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3(x: 0, y: 0, z: 10)
+        cameraNode.camera = camera
         
         scnView.pointOfView = cameraNode
         scnView.autoenablesDefaultLighting = false
         scnView.allowsCameraControl = true // allows the user to manipulate the camera
         scnView.showsStatistics = true // show statistics such as fps and timing information
         scnView.backgroundColor = .clear
+        //scnView.scene?.background.contents = UIImage(named: "galaxy")
         scnView.play(nil)
     }
     

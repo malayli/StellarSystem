@@ -15,6 +15,7 @@
 		1FF9A11121787BDD0023D198 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF9A10F21787BDD0023D198 /* LaunchScreen.storyboard */; };
 		1FF9A11C21787BDE0023D198 /* StellarSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9A11B21787BDE0023D198 /* StellarSystemTests.swift */; };
 		1FF9A12721787BDE0023D198 /* StellarSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9A12621787BDE0023D198 /* StellarSystemUITests.swift */; };
+		3ADF423923443E26003AEC0E /* Shaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADF423823443E26003AEC0E /* Shaders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		1FF9A12221787BDE0023D198 /* StellarSystemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StellarSystemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF9A12621787BDE0023D198 /* StellarSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StellarSystemUITests.swift; sourceTree = "<group>"; };
 		1FF9A12821787BDE0023D198 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3ADF423823443E26003AEC0E /* Shaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shaders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				1FF9A11221787BDD0023D198 /* Info.plist */,
 				1FF9A10F21787BDD0023D198 /* LaunchScreen.storyboard */,
 				1FF9A10A21787BDD0023D198 /* Main.storyboard */,
+				3ADF423823443E26003AEC0E /* Shaders.swift */,
 				1F4B14DC2178809A00CCD19B /* StellarSystemScene.swift */,
 			);
 			path = StellarSystem;
@@ -264,6 +267,7 @@
 			files = (
 				1F4B14DF2178823700CCD19B /* GameViewController.swift in Sources */,
 				1F4B14DD2178809A00CCD19B /* StellarSystemScene.swift in Sources */,
+				3ADF423923443E26003AEC0E /* Shaders.swift in Sources */,
 				1FF9A10721787BDD0023D198 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,12 +442,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6ZQLTEG662;
 				INFOPLIST_FILE = StellarSystem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mlk80.StellarSystem;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.malik-alayli.theapptest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -455,12 +460,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6ZQLTEG662;
 				INFOPLIST_FILE = StellarSystem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mlk80.StellarSystem;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.malik-alayli.theapptest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
