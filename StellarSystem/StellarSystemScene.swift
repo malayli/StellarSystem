@@ -21,8 +21,10 @@ final class StellarSystemScene: SCNScene {
         let sunGroupNode = SCNNode()
         sunGroupNode.castsShadow = false
         sunGroupNode.position = SCNVector3Make(0, 0, 0)
-        sunGroupNode.addChildNode(sunLightNode)
         contentNode.addChildNode(sunGroupNode)
+        
+        sunGroupNode.addChildNode(sunLightNode(angle: -Float(Double.pi/2)))
+        sunGroupNode.addChildNode(sunLightNode(angle: 0))
         
         let sunNode = sphereNode("sun", radius: 1.5, lightningModel: .constant, duration: 20.0)
         sunGroupNode.addChildNode(sunNode)
@@ -48,10 +50,82 @@ final class StellarSystemScene: SCNScene {
         sunGroupNode.addChildNode(earthRotationNode)
         
         // Mars-group (will contain the Earth, and the Moon)
-        let marsRotationNode = planetRotationNode()
-        let marsGroupNode = planetGroupNode(sphereNode: sphereNode("mars", radius: 0.8, lightningModel: .constant), position: SCNVector3Make(16, 0, 0))
+        let marsRotationNode = planetRotationNode(angle: Float(Double.pi/2))
+        let marsGroupNode = planetGroupNode(sphereNode: sphereNode("mars", radius: 0.8), position: SCNVector3Make(16, 0, 0))
         marsRotationNode.addChildNode(marsGroupNode)
         sunGroupNode.addChildNode(marsRotationNode)
+    }
+}
+
+private extension StellarSystemScene {
+    private func sunLightNode(angle: Float) -> SCNNode {
+        let sunLightNode = SCNNode()
+        sunLightNode.castsShadow = false
+        sunLightNode.light = SCNLight()
+        sunLightNode.light?.castsShadow = true
+        sunLightNode.light?.type = .spot
+        sunLightNode.light?.color = UIColor.white
+        sunLightNode.light?.spotInnerAngle = 0
+        sunLightNode.light?.spotOuterAngle = 90
+        sunLightNode.position = SCNVector3(0, 0, 0)
+        sunLightNode.orientation = SCNQuaternion(0, 0, 0, 0)
+        
+        sunLightNode.addAnimation(duration: 20.0, from: NSValue(scnVector4: SCNVector4Make(0, 1, 0, angle)), to: NSValue(scnVector4: SCNVector4Make(0, 1, 0, angle + Float(Double.pi) * 2.0)), key: "sun rotation")
+        return sunLightNode
+    }
+}
+
+private extension StellarSystemScene {
+    private func sphereNode(_ imageName: String,
+                            castsShadow: Bool = false,
+                            radius: CGFloat,
+                            lightningModel: SCNMaterial.LightingModel = .lambert,
+                            duration: CFTimeInterval = 4.0) -> SCNNode {
+        let sphereNode = SCNNode(radius: radius, imageName: imageName)
+        sphereNode.castsShadow = castsShadow
+        sphereNode.position = SCNVector3Make(0, 0, 0)
+        sphereNode.geometry?.firstMaterial?.lightingModel = lightningModel
+        sphereNode.addAnimation(duration: duration, from: NSValue(scnVector4: SCNVector4Make(0, 1, 0, 0)), to: NSValue(scnVector4: SCNVector4Make(0, 1, 0, Float(Double.pi) * 2.0)), key: "planet \(imageName) rotation")
+        return sphereNode
+    }
+}
+
+private extension StellarSystemScene {
+    private func planetGroupNode(sphereNode: SCNNode, position: SCNVector3) -> SCNNode {
+        let planetGroupNode = SCNNode()
+        planetGroupNode.castsShadow = false
+        planetGroupNode.position = position
+        planetGroupNode.addChildNode(sphereNode)
+        return planetGroupNode
+    }
+    
+    private func planetRotationNode(angle: Float = 0.0) -> SCNNode {
+        let planetRotationNode = SCNNode()
+        planetRotationNode.castsShadow = false
+        planetRotationNode.position = SCNVector3(0, 0, 0)
+        planetRotationNode.addAnimation(duration: 20, from: NSValue(scnVector4: SCNVector4Make(0, 2, 1, angle)), to: NSValue(scnVector4: SCNVector4Make(0, 2, 1, angle + Float(Double.pi) * 2.0)), key: "planet rotation around the sun")
+        return planetRotationNode
+    }
+}
+
+private extension StellarSystemScene {
+    private func satelliteNode(_ imageName: String) -> SCNNode {
+        let satelliteNode = SCNNode(radius: 0.5, imageName: imageName)
+        satelliteNode.castsShadow = true
+        satelliteNode.position = SCNVector3Make(2, 0, 0)
+        satelliteNode.geometry?.firstMaterial?.lightingModel = .lambert
+        satelliteNode.addAnimation(duration: 4.0, from: NSValue(scnVector4: SCNVector4Make(0, 1, 0, 0)), to: NSValue(scnVector4: SCNVector4Make(0, 1, 0, Float(Double.pi) * 2.0)), key: "satellite rotation")
+        return satelliteNode
+    }
+    
+    private func satelliteRotationNode(satelliteNode: SCNNode) -> SCNNode {
+        // Moon-rotation (center of rotation of the Moon around the Earth)
+        let satelliteRotationNode = SCNNode()
+        satelliteRotationNode.castsShadow = false
+        satelliteRotationNode.addChildNode(satelliteNode)
+        // Rotate the satellite around the earth
+        satelliteRotationNode.addAnimation(duration: 20.0, from: NSValue(scnVector4: SCNVector4Make(0, 2, 1, 0)), to: NSValue(scnVector4: SCNVector4Make(0, 2, 1, Float(Double.pi) * 2.0)), key: "satellite rotation around earth")
+        return satelliteRotationNode
     }
 }
 
@@ -83,76 +157,6 @@ private extension StellarSystemScene {
         node.geometry?.firstMaterial?.lightingModel = .constant
         node.addAnimation(duration: 20.0, from: NSValue(scnVector4: SCNVector4Make(0, 1, 0, 0)), to: NSValue(scnVector4: SCNVector4Make(0, 1, 0, Float(Double.pi) * 2.0)), key: "borg rotation")
         return node
-    }
-}
-
-private extension StellarSystemScene {
-    private var sunLightNode: SCNNode {
-        let sunLightNode = SCNNode()
-        sunLightNode.castsShadow = false
-        sunLightNode.light = SCNLight()
-        sunLightNode.light?.castsShadow = true
-        sunLightNode.light?.type = .spot
-        sunLightNode.light?.color = UIColor.white
-        sunLightNode.light?.spotInnerAngle = 0
-        sunLightNode.light?.spotOuterAngle = 90
-        sunLightNode.position = SCNVector3(0, 0, 0)
-        sunLightNode.orientation = SCNQuaternion(0, 0, 0, 0)
-        
-        sunLightNode.addAnimation(duration: 20.0, from: NSValue(scnVector4: SCNVector4Make(0, 1, 0, -Float(Double.pi/2))), to: NSValue(scnVector4: SCNVector4Make(0, 1, 0, -Float(Double.pi/2) + Float(Double.pi) * 2.0)), key: "sun rotation")
-        return sunLightNode
-    }
-}
-
-private extension StellarSystemScene {
-    private func sphereNode(_ imageName: String,
-                            castsShadow: Bool = false,
-                            radius: CGFloat,
-                            lightningModel: SCNMaterial.LightingModel = .lambert,
-                            duration: CFTimeInterval = 4.0) -> SCNNode {
-        let sphereNode = SCNNode(radius: radius, imageName: imageName)
-        sphereNode.castsShadow = castsShadow
-        sphereNode.position = SCNVector3Make(0, 0, 0)
-        sphereNode.geometry?.firstMaterial?.lightingModel = lightningModel
-        sphereNode.addAnimation(duration: duration, from: NSValue(scnVector4: SCNVector4Make(0, 1, 0, 0)), to: NSValue(scnVector4: SCNVector4Make(0, 1, 0, Float(Double.pi) * 2.0)), key: "planet rotation")
-        return sphereNode
-    }
-    
-    private func planetGroupNode(sphereNode: SCNNode, position: SCNVector3) -> SCNNode {
-        let planetGroupNode = SCNNode()
-        planetGroupNode.castsShadow = false
-        planetGroupNode.position = position
-        planetGroupNode.addChildNode(sphereNode)
-        return planetGroupNode
-    }
-    
-    private func planetRotationNode() -> SCNNode {
-        let planetRotationNode = SCNNode()
-        planetRotationNode.castsShadow = false
-        planetRotationNode.position = SCNVector3(0, 0, 0)
-        planetRotationNode.addAnimation(duration: 20, from: NSValue(scnVector4: SCNVector4Make(0, 2, 1, 0)), to: NSValue(scnVector4: SCNVector4Make(0, 2, 1, Float(Double.pi) * 2.0)), key: "planet rotation around the sun")
-        return planetRotationNode
-    }
-}
-
-private extension StellarSystemScene {
-    private func satelliteNode(_ imageName: String) -> SCNNode {
-        let satelliteNode = SCNNode(radius: 0.5, imageName: imageName)
-        satelliteNode.castsShadow = true
-        satelliteNode.position = SCNVector3Make(2, 0, 0)
-        satelliteNode.geometry?.firstMaterial?.lightingModel = .lambert
-        satelliteNode.addAnimation(duration: 4.0, from: NSValue(scnVector4: SCNVector4Make(0, 1, 0, 0)), to: NSValue(scnVector4: SCNVector4Make(0, 1, 0, Float(Double.pi) * 2.0)), key: "satellite rotation")
-        return satelliteNode
-    }
-    
-    private func satelliteRotationNode(satelliteNode: SCNNode) -> SCNNode {
-        // Moon-rotation (center of rotation of the Moon around the Earth)
-        let satelliteRotationNode = SCNNode()
-        satelliteRotationNode.castsShadow = false
-        satelliteRotationNode.addChildNode(satelliteNode)
-        // Rotate the satellite around the earth
-        satelliteRotationNode.addAnimation(duration: 20.0, from: NSValue(scnVector4: SCNVector4Make(0, 2, 1, 0)), to: NSValue(scnVector4: SCNVector4Make(0, 2, 1, Float(Double.pi) * 2.0)), key: "satellite rotation around earth")
-        return satelliteRotationNode
     }
 }
 
