@@ -43,7 +43,7 @@ final class StellarSystemScene: SCNScene {
         venusRotationNode.addChildNode(venusGroupNode)
         sunGroupNode.addChildNode(venusRotationNode)
         
-        // Earth-group (will contain the Earth, and the Moon)
+        // Earth-group (will contain the Earth and the Moon)
         let earthRotationNode = SphereRotationNode(angle: Float(Double.pi/4))
         let earthGroupNode = SphereGroupNode(sphereNode: SphereNode("earth", castsShadow: true, radius: 1.0), position: SCNVector3Make(10, 0, 0))
         let moonNode = SphereNode("moon", castsShadow: true, radius: 0.5, position: SCNVector3Make(2, 0, 0))
@@ -51,9 +51,13 @@ final class StellarSystemScene: SCNScene {
         earthRotationNode.addChildNode(earthGroupNode)
         sunGroupNode.addChildNode(earthRotationNode)
         
-        // Mars-group (will contain Mars)
+        // Mars-group (will contain Mars, Phobos and Deimos)
         let marsRotationNode = SphereRotationNode(angle: Float(Double.pi/2))
         let marsGroupNode = SphereGroupNode(sphereNode: SphereNode("mars", radius: 0.8), position: SCNVector3Make(16, 0, 0))
+        let phobosNode = SphereNode("moon", castsShadow: true, radius: 0.3, position: SCNVector3Make(2, 0, 0))
+        marsGroupNode.addChildNode(SatelliteRotationNode(satelliteNode: phobosNode))
+        let deimosNode = SphereNode("moon", castsShadow: true, radius: 0.15, position: SCNVector3Make(4, 0, 0))
+        marsGroupNode.addChildNode(SatelliteRotationNode(satelliteNode: deimosNode))
         marsRotationNode.addChildNode(marsGroupNode)
         sunGroupNode.addChildNode(marsRotationNode)
         
