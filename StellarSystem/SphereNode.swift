@@ -26,15 +26,17 @@ final class SphereNode: SCNNode {
 }
 
 final class SphereGroupNode: SCNNode {
-    convenience init(sphereNode: SCNNode, position: SCNVector3) {
+    convenience init(sphereNodes: [SCNNode], position: SCNVector3) {
         self.init()
         castsShadow = false
         self.position = position
-        addChildNode(sphereNode)
+        sphereNodes.forEach { (sphereNode) in
+            addChildNode(sphereNode)
+        }
     }
 }
 
-final class SphereRotationNode: SCNNode {
+final class PlanetRotationNode: SCNNode {
     convenience init(angle: Float = 0.0) {
         self.init()
         castsShadow = false
