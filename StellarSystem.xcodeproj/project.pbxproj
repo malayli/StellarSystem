@@ -15,6 +15,10 @@
 		1FF9A11121787BDD0023D198 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF9A10F21787BDD0023D198 /* LaunchScreen.storyboard */; };
 		1FF9A11C21787BDE0023D198 /* StellarSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9A11B21787BDE0023D198 /* StellarSystemTests.swift */; };
 		1FF9A12721787BDE0023D198 /* StellarSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9A12621787BDE0023D198 /* StellarSystemUITests.swift */; };
+		3A281FC0234AD5630074768D /* SunLightNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A281FBF234AD5630074768D /* SunLightNode.swift */; };
+		3A281FC2234AD5790074768D /* SphereNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A281FC1234AD5790074768D /* SphereNode.swift */; };
+		3A281FC4234AD59A0074768D /* SCNNode+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A281FC3234AD59A0074768D /* SCNNode+Rotation.swift */; };
+		3A281FC6234AD7EB0074768D /* BorgNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A281FC5234AD7EB0074768D /* BorgNode.swift */; };
 		3ADF423923443E26003AEC0E /* Shaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADF423823443E26003AEC0E /* Shaders.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +54,10 @@
 		1FF9A12221787BDE0023D198 /* StellarSystemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StellarSystemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF9A12621787BDE0023D198 /* StellarSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StellarSystemUITests.swift; sourceTree = "<group>"; };
 		1FF9A12821787BDE0023D198 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A281FBF234AD5630074768D /* SunLightNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunLightNode.swift; sourceTree = "<group>"; };
+		3A281FC1234AD5790074768D /* SphereNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereNode.swift; sourceTree = "<group>"; };
+		3A281FC3234AD59A0074768D /* SCNNode+Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNNode+Rotation.swift"; sourceTree = "<group>"; };
+		3A281FC5234AD7EB0074768D /* BorgNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorgNode.swift; sourceTree = "<group>"; };
 		3ADF423823443E26003AEC0E /* Shaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shaders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,12 +111,16 @@
 			children = (
 				1FF9A10621787BDD0023D198 /* AppDelegate.swift */,
 				1FF9A10D21787BDD0023D198 /* Assets.xcassets */,
+				3A281FC5234AD7EB0074768D /* BorgNode.swift */,
 				1F4B14DE2178823700CCD19B /* GameViewController.swift */,
 				1FF9A11221787BDD0023D198 /* Info.plist */,
 				1FF9A10F21787BDD0023D198 /* LaunchScreen.storyboard */,
 				1FF9A10A21787BDD0023D198 /* Main.storyboard */,
+				3A281FC3234AD59A0074768D /* SCNNode+Rotation.swift */,
 				3ADF423823443E26003AEC0E /* Shaders.swift */,
+				3A281FC1234AD5790074768D /* SphereNode.swift */,
 				1F4B14DC2178809A00CCD19B /* StellarSystemScene.swift */,
+				3A281FBF234AD5630074768D /* SunLightNode.swift */,
 			);
 			path = StellarSystem;
 			sourceTree = "<group>";
@@ -265,7 +277,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A281FC0234AD5630074768D /* SunLightNode.swift in Sources */,
+				3A281FC6234AD7EB0074768D /* BorgNode.swift in Sources */,
 				1F4B14DF2178823700CCD19B /* GameViewController.swift in Sources */,
+				3A281FC4234AD59A0074768D /* SCNNode+Rotation.swift in Sources */,
+				3A281FC2234AD5790074768D /* SphereNode.swift in Sources */,
 				1F4B14DD2178809A00CCD19B /* StellarSystemScene.swift in Sources */,
 				3ADF423923443E26003AEC0E /* Shaders.swift in Sources */,
 				1FF9A10721787BDD0023D198 /* AppDelegate.swift in Sources */,
