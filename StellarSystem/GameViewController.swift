@@ -31,9 +31,9 @@ final class GameViewController: UIViewController {
         scnView.pointOfView = cameraNode
         scnView.autoenablesDefaultLighting = false
         scnView.allowsCameraControl = true // allows the user to manipulate the camera
-        scnView.showsStatistics = true // show statistics such as fps and timing information
+        scnView.showsStatistics = false // show statistics such as fps and timing information
         scnView.backgroundColor = .clear
-        //scnView.scene?.background.contents = UIImage(named: "galaxy")
+        scnView.scene?.background.contents = UIImage(named: "galaxy")
         scnView.play(nil)
     }
     
