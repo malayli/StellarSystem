@@ -10,18 +10,12 @@ final class StellarSystemScene: SCNScene {
         
         rootNode.castsShadow = false
         
-        // Content Node
-        
-        let stellarSystemNode = SCNNode()
-        stellarSystemNode.castsShadow = false
-        rootNode.addChildNode(stellarSystemNode)
-        
         // Sun-group
         
         let sunGroupNode = SCNNode()
         sunGroupNode.castsShadow = false
         sunGroupNode.position = SCNVector3Make(0, 0, 0)
-        stellarSystemNode.addChildNode(sunGroupNode)
+        rootNode.addChildNode(sunGroupNode)
         
         sunGroupNode.addChildNode(SunLightNode(angle: -Float(Double.pi/2)))
         sunGroupNode.addChildNode(SunLightNode(angle: -Float(Double.pi/4)))
