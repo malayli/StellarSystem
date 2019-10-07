@@ -33,14 +33,14 @@ final class StellarSystemScene: SCNScene {
         
         // Mercury-group
         let mercuryRotationNode = SphereRotationNode(angle: 0)
-        let mercuryGroupNode = SphereGroupNode(sphereNode: SphereNode("mercury", radius: 0.4), position: SCNVector3Make(3, 0, 0))
-        mercuryRotationNode.addChildNode(mercuryGroupNode)
+        let mercuryNode = SphereNode("mercury", radius: 0.4, position: SCNVector3Make(3, 0, 0))
+        mercuryRotationNode.addChildNode(mercuryNode)
         sunGroupNode.addChildNode(mercuryRotationNode)
         
         // Venus-group
         let venusRotationNode = SphereRotationNode(angle: Float(Double.pi/8))
-        let venusGroupNode = SphereGroupNode(sphereNode: SphereNode("venus", radius: 0.9), position: SCNVector3Make(6, 0, 0))
-        venusRotationNode.addChildNode(venusGroupNode)
+        let venusNode = SphereNode("venus", radius: 0.9, position: SCNVector3Make(6, 0, 0))
+        venusRotationNode.addChildNode(venusNode)
         sunGroupNode.addChildNode(venusRotationNode)
         
         // Earth-group (will contain the Earth and the Moon)
