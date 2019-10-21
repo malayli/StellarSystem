@@ -10,10 +10,10 @@ import SwiftUI
 import SceneKit
 
 struct SceneKitView {
-    private let sceneView = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()?.view as? SCNView
+    private let sceneView = StellarSystemView(frame: .zero)
     
     func pause () {
-        guard let scnView = sceneView, let scene = scnView.scene else {
+        guard let scene = sceneView.scene else {
             return
         }
         scene.isPaused = !scene.isPaused
@@ -22,10 +22,7 @@ struct SceneKitView {
 
 extension SceneKitView : UIViewRepresentable {
     func makeUIView(context: Context) -> UIView {
-        guard let mainView = sceneView else {
-            return UIView()
-        }
-        return mainView
+        return sceneView
     }
 
     func updateUIView(_ view: UIView, context: Context) {

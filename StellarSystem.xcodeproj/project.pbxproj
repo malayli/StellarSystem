@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1FF9A10721787BDD0023D198 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9A10621787BDD0023D198 /* AppDelegate.swift */; };
-		1FF9A10C21787BDD0023D198 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF9A10A21787BDD0023D198 /* Main.storyboard */; };
 		1FF9A10E21787BDD0023D198 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF9A10D21787BDD0023D198 /* Assets.xcassets */; };
 		1FF9A11121787BDD0023D198 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF9A10F21787BDD0023D198 /* LaunchScreen.storyboard */; };
 		1FF9A11C21787BDE0023D198 /* StellarSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9A11B21787BDE0023D198 /* StellarSystemTests.swift */; };
 		1FF9A12721787BDE0023D198 /* StellarSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9A12621787BDE0023D198 /* StellarSystemUITests.swift */; };
 		3ACA46F0235D4933003A66E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA46EF235D4933003A66E4 /* SceneDelegate.swift */; };
-		3ACA4701235D534F003A66E4 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA46F6235D534E003A66E4 /* GameViewController.swift */; };
+		3ACA4701235D534F003A66E4 /* StellarSystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA46F6235D534E003A66E4 /* StellarSystemView.swift */; };
 		3ACA4702235D534F003A66E4 /* SceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA46F7235D534E003A66E4 /* SceneKitView.swift */; };
 		3ACA4703235D534F003A66E4 /* StellarSystemScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA46F8235D534E003A66E4 /* StellarSystemScene.swift */; };
 		3ACA4704235D534F003A66E4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA46F9235D534E003A66E4 /* MainView.swift */; };
@@ -46,7 +45,6 @@
 /* Begin PBXFileReference section */
 		1FF9A10321787BDD0023D198 /* StellarSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StellarSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF9A10621787BDD0023D198 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1FF9A10B21787BDD0023D198 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FF9A10D21787BDD0023D198 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FF9A11021787BDD0023D198 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FF9A11221787BDD0023D198 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,7 +55,7 @@
 		1FF9A12621787BDE0023D198 /* StellarSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StellarSystemUITests.swift; sourceTree = "<group>"; };
 		1FF9A12821787BDE0023D198 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3ACA46EF235D4933003A66E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3ACA46F6235D534E003A66E4 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		3ACA46F6235D534E003A66E4 /* StellarSystemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StellarSystemView.swift; sourceTree = "<group>"; };
 		3ACA46F7235D534E003A66E4 /* SceneKitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneKitView.swift; sourceTree = "<group>"; };
 		3ACA46F8235D534E003A66E4 /* StellarSystemScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StellarSystemScene.swift; sourceTree = "<group>"; };
 		3ACA46F9235D534E003A66E4 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				1FF9A10D21787BDD0023D198 /* Assets.xcassets */,
 				1FF9A11221787BDD0023D198 /* Info.plist */,
 				1FF9A10F21787BDD0023D198 /* LaunchScreen.storyboard */,
-				1FF9A10A21787BDD0023D198 /* Main.storyboard */,
 				3ACA46FC235D534F003A66E4 /* Node */,
 				3ACA46EF235D4933003A66E4 /* SceneDelegate.swift */,
 				3ACA46FA235D534F003A66E4 /* Shaders */,
@@ -151,11 +148,11 @@
 		3ACA46F5235D534E003A66E4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				3ACA46F6235D534E003A66E4 /* GameViewController.swift */,
 				3ACA46F9235D534E003A66E4 /* MainView.swift */,
 				3ACA470A235D8575003A66E4 /* MotionButton.swift */,
 				3ACA46F7235D534E003A66E4 /* SceneKitView.swift */,
 				3ACA46F8235D534E003A66E4 /* StellarSystemScene.swift */,
+				3ACA46F6235D534E003A66E4 /* StellarSystemView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -288,7 +285,6 @@
 			files = (
 				1FF9A11121787BDD0023D198 /* LaunchScreen.storyboard in Resources */,
 				1FF9A10E21787BDD0023D198 /* Assets.xcassets in Resources */,
-				1FF9A10C21787BDD0023D198 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,7 +311,7 @@
 			files = (
 				3ACA46F0235D4933003A66E4 /* SceneDelegate.swift in Sources */,
 				3ACA4704235D534F003A66E4 /* MainView.swift in Sources */,
-				3ACA4701235D534F003A66E4 /* GameViewController.swift in Sources */,
+				3ACA4701235D534F003A66E4 /* StellarSystemView.swift in Sources */,
 				3ACA4702235D534F003A66E4 /* SceneKitView.swift in Sources */,
 				1FF9A10721787BDD0023D198 /* AppDelegate.swift in Sources */,
 				3ACA4708235D534F003A66E4 /* SunLightNode.swift in Sources */,
@@ -360,14 +356,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1FF9A10A21787BDD0023D198 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1FF9A10B21787BDD0023D198 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1FF9A10F21787BDD0023D198 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

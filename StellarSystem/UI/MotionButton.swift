@@ -13,7 +13,7 @@ struct MotionButtonStyle: ButtonStyle {
         return configuration.label
             .padding()
             .foregroundColor(.white)
-            .background(Color.blue)
+            .background(configuration.isPressed ? Color.red : Color.blue)
             .cornerRadius(8.0)
     }
 }
