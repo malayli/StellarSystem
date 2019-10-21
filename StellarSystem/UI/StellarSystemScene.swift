@@ -56,6 +56,6 @@ final class StellarSystemScene: SCNScene {
         sunGroupNode.addChildNode(marsRotationNode)
         
         // Borg
-        sunGroupNode.addChildNode(BorgNode(position: SCNVector3(3, 3, 0)))
+        //sunGroupNode.addChildNode(BorgNode(position: SCNVector3(3, 3, 0)))
     }
 }
