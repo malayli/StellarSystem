@@ -9,9 +9,23 @@
 import SwiftUI
 
 struct MainView: View {
+    private let sceneKitView = SceneKitView()
+    
     var body: some View {
-        SceneKitView().overlay(
+        sceneKitView
+        .overlay(
             VStack {
+                Spacer()
+                HStack {
+                    MotionButton(completion: pause)
+                        .buttonStyle(MotionButtonStyle())
+                        .padding(16)
+                    Spacer()
+                }
+            }
+        )
+        .overlay(
+            VStack(alignment: .center) {
                 Spacer()
                 Text("Stellar System")
                     .font(.title)
@@ -19,5 +33,9 @@ struct MainView: View {
                     .padding(16)
             }
         ).edgesIgnoringSafeArea(.all)
+    }
+    
+    func pause() {
+        sceneKitView.pause()
     }
 }

@@ -23,6 +23,7 @@
 		3ACA4707235D534F003A66E4 /* SphereNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA46FE235D534F003A66E4 /* SphereNode.swift */; };
 		3ACA4708235D534F003A66E4 /* SunLightNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA46FF235D534F003A66E4 /* SunLightNode.swift */; };
 		3ACA4709235D534F003A66E4 /* BorgNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA4700235D534F003A66E4 /* BorgNode.swift */; };
+		3ACA470B235D8575003A66E4 /* MotionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA470A235D8575003A66E4 /* MotionButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		3ACA46FE235D534F003A66E4 /* SphereNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SphereNode.swift; sourceTree = "<group>"; };
 		3ACA46FF235D534F003A66E4 /* SunLightNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunLightNode.swift; sourceTree = "<group>"; };
 		3ACA4700235D534F003A66E4 /* BorgNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorgNode.swift; sourceTree = "<group>"; };
+		3ACA470A235D8575003A66E4 /* MotionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			children = (
 				3ACA46F6235D534E003A66E4 /* GameViewController.swift */,
 				3ACA46F9235D534E003A66E4 /* MainView.swift */,
+				3ACA470A235D8575003A66E4 /* MotionButton.swift */,
 				3ACA46F7235D534E003A66E4 /* SceneKitView.swift */,
 				3ACA46F8235D534E003A66E4 /* StellarSystemScene.swift */,
 			);
@@ -317,6 +320,7 @@
 				1FF9A10721787BDD0023D198 /* AppDelegate.swift in Sources */,
 				3ACA4708235D534F003A66E4 /* SunLightNode.swift in Sources */,
 				3ACA4703235D534F003A66E4 /* StellarSystemScene.swift in Sources */,
+				3ACA470B235D8575003A66E4 /* MotionButton.swift in Sources */,
 				3ACA4709235D534F003A66E4 /* BorgNode.swift in Sources */,
 				3ACA4706235D534F003A66E4 /* SCNNode+Rotation.swift in Sources */,
 				3ACA4705235D534F003A66E4 /* Shaders.swift in Sources */,

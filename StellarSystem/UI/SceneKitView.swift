@@ -7,10 +7,22 @@
 //
 
 import SwiftUI
+import SceneKit
 
-struct SceneKitView : UIViewRepresentable {
+struct SceneKitView {
+    private let sceneView = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()?.view as? SCNView
+    
+    func pause () {
+        guard let scnView = sceneView, let scene = scnView.scene else {
+            return
+        }
+        scene.isPaused = !scene.isPaused
+    }
+}
+
+extension SceneKitView : UIViewRepresentable {
     func makeUIView(context: Context) -> UIView {
-        guard let mainView = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()?.view else {
+        guard let mainView = sceneView else {
             return UIView()
         }
         return mainView

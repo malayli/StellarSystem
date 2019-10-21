@@ -14,20 +14,11 @@ final class GameViewController: UIViewController {
             return
         }
         
-        scnView.scene = StellarSystemScene() as StellarSystemScene
-
-        let camera = SCNCamera()
-        camera.wantsHDR = true
-        camera.bloomThreshold = 0.8
-        camera.bloomIntensity = 2
-        camera.bloomBlurRadius = 16.0
-        camera.wantsExposureAdaptation = false
-        
-        // create and add a camera to the scene
         let cameraNode = SCNNode()
         cameraNode.position = SCNVector3(x: 0, y: 0, z: 18)
-        cameraNode.camera = camera
+        cameraNode.camera = camera()
         
+        scnView.scene = StellarSystemScene()
         scnView.pointOfView = cameraNode
         scnView.autoenablesDefaultLighting = false
         scnView.allowsCameraControl = true // allows the user to manipulate the camera
@@ -37,11 +28,14 @@ final class GameViewController: UIViewController {
         scnView.play(nil)
     }
     
-    @IBAction func pause(_ sender: Any?) {
-        guard let scnView = view as? SCNView, let scene = scnView.scene else {
-            return
-        }
-        scene.isPaused = !scene.isPaused
+    private func camera() -> SCNCamera {
+        let camera = SCNCamera()
+        camera.wantsHDR = true
+        camera.bloomThreshold = 0.8
+        camera.bloomIntensity = 2
+        camera.bloomBlurRadius = 16.0
+        camera.wantsExposureAdaptation = false
+        return camera
     }
     
     func shouldAutorotate() -> Bool {
