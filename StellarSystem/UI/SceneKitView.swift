@@ -12,7 +12,7 @@ import SceneKit
 struct SceneKitView {
     private let sceneView = StellarSystemView(frame: .zero)
     
-    func pause () {
+    func toggleMotion () {
         guard let scene = sceneView.scene else {
             return
         }

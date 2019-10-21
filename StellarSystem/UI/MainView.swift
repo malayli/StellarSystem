@@ -17,7 +17,7 @@ struct MainView: View {
             VStack {
                 Spacer()
                 HStack {
-                    MotionButton(completion: pause)
+                    MotionButton(completion: toggleMotion)
                         .buttonStyle(MotionButtonStyle())
                         .padding(16)
                     Spacer()
@@ -35,7 +35,7 @@ struct MainView: View {
         ).edgesIgnoringSafeArea(.all)
     }
     
-    func pause() {
-        sceneKitView.pause()
+    func toggleMotion() {
+        sceneKitView.toggleMotion()
     }
 }
